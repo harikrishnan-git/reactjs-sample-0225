@@ -4,12 +4,11 @@ import { auth, db } from "../src/firebase";
 
 export default function useTaskLists() {
   const [lists, setLists] = useState([]);
-  const [newList, setNewList] = useState("");
 
   useEffect(() => {
     const fetchLists = async () => {
       const q = query(
-        collection(db, "tasklists"),
+        collection(db, "taskLists"),
         where("userId", "==", auth.currentUser.uid)
       );
       const snapshot = await getDocs(q);
@@ -18,14 +17,17 @@ export default function useTaskLists() {
     fetchLists();
   }, []);
 
-  const addList = async () => {
-    if (!newList.trim()) return;
-    const docRef = await addDoc(collection(db, "tasklists"), {
-      name: newList,
-      userId: auth.currentUser.uid,
-    });
-    setLists((prev) => [...prev, { id: docRef.id, name: newList }]);
-    setNewList("");
+  const addList = async (title) => {
+    try {
+      if (!title.trim()) return;
+      const docRef = await addDoc(collection(db, "taskLists"), {
+        name: title,
+        userId: auth.currentUser.uid,
+      });
+      setLists((prev) => [...prev, { id: docRef.id, name: title }]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return {
