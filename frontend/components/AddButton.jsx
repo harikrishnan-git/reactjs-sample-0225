@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { usePopupContext } from "../contexts/PopupContext";
 
 export default function taskListHeader() {
-  const [addTask, setAddTask] = useState(false);
+  const { open } = usePopupContext();
   return (
     <div>
       <div className="flex m-3 justify-content-start items-center">
         <svg
-          onClick={() => setAddTask(true)}
+          onClick={open}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
