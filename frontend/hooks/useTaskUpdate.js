@@ -10,7 +10,7 @@ export default function useTaskListDetail(listId) {
 
     const taskRef = collection(db, "tasklists", listId, "tasks");
 
-    // ✅ Real-time listener
+    // Real-time listener
     const unsubscribe = onSnapshot(taskRef, (snapshot) => {
       const taskList = snapshot.docs.map((doc) => ({
         id: doc.id,

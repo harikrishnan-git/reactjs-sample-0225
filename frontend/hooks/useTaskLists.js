@@ -41,8 +41,6 @@ export default function useTaskLists() {
         name: title,
         userId: auth.currentUser.uid,
       });
-      // No need to manually update setLists here,
-      // onSnapshot will catch the change and update automatically
     } catch (error) {
       console.log(error);
     }
