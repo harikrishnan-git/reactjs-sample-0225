@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <div>
       <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto p-4">
           <a
             href="#"
             className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -33,7 +33,7 @@ export default function Navbar() {
             </span>
           </a>
 
-          {/* ✅ Load image after URL is set */}
+          {/* Load image after URL is set */}
           {imageUrl && (
             <img
               src={imageUrl}
