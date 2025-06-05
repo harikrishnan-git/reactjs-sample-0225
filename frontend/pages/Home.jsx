@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import TaskList from "../components/TaskList";
 import { usePopupContext } from "../contexts/PopupContext";
 import AddTaskPopup from "../components/AddTaskPopup";
-import useTaskLists from "../components/useTaskLists";
+import useTaskLists from "../hooks/useTaskLists";
 import AddTaskList from "../components/AddTaskList";
 import AddTaskListPopup from "../components/AddTaskListPopup";
 

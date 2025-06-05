@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddButton from "./AddButton";
 import TaskListHeader from "./TaskListHeader";
 import TaskItem from "./TaskItem";
-import useTaskUpdate from "./useTaskUpdate";
+import useTaskUpdate from "../hooks/useTaskUpdate";
 
 export default function TaskList({ data }) {
   const { tasks, setTasks } = useTaskUpdate(data.id);
