@@ -12,10 +12,6 @@ export default function Home() {
   const { showPopup } = usePopupContext();
   const { lists } = useTaskLists();
 
-  useEffect(() => {
-    console.log("Lists:", lists);
-  }, [lists]);
-
   return (
     <div>
       <Navbar />
