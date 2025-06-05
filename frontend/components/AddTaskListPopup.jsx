@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import usetasklists from "./useTaskLists";
+import useTaskLists from "./useTaskLists";
 
 export default function AddTaskListPopup({ setShowListPopup }) {
   const [taskTitle, setTaskTitle] = useState("");
-  const { addList } = usetasklists();
+  const { addList } = useTaskLists();
   return (
     <div
       tabIndex="-1"
@@ -45,10 +45,11 @@ export default function AddTaskListPopup({ setShowListPopup }) {
           <div className="p-4 md:p-5">
             <form
               className="space-y-4"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                addList(taskTitle);
+                await addList(taskTitle);
                 setTaskTitle("");
+                setShowListPopup(false);
               }}
             >
               <label

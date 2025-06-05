@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import AddButton from "./AddButton";
 import TaskListHeader from "./TaskListHeader";
 import TaskItem from "./TaskItem";
-import taskUpdate from "./taskUpdate";
+import useTaskUpdate from "./useTaskUpdate";
 
 export default function TaskList({ data }) {
-  const { tasks, setTasks } = taskUpdate(data.id);
+  const { tasks, setTasks } = useTaskUpdate(data.id);
   const pending = tasks.filter((task) => !task.completed);
   const completed = tasks.filter((task) => task.completed);
   return (

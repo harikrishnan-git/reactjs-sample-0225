@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { usePopupContext } from "../contexts/PopupContext";
-import taskUpdate from "./taskUpdate";
+import taskUpdate from "./useTaskUpdate";
 
 export default function AddTaskPopup() {
   const { listId } = usePopupContext();
@@ -8,7 +8,7 @@ export default function AddTaskPopup() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const { addTask } = taskUpdate();
+  const { addTask } = taskUpdate(listId);
   const { close } = usePopupContext();
   return (
     <div
@@ -51,7 +51,7 @@ export default function AddTaskPopup() {
               className="space-y-4"
               onSubmit={(e) => {
                 e.preventDefault();
-                addTask(listId, title, description, dueDate);
+                addTask(title, description, dueDate);
                 setTitle("");
                 setDescription("");
                 setDueDate("");
