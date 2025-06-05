@@ -20,9 +20,9 @@ export default function Home() {
     <div>
       <Navbar />
       <div className="flex flex-wrap gap-4 m-4">
-        {lists.map((data, index) => (
-          <div className="" key={index}>
-            <TaskList key={index} data={data} />
+        {lists.map((data) => (
+          <div className="" key={data.id}>
+            <TaskList key={data.id} data={data} />
           </div>
         ))}
       </div>

@@ -41,5 +41,5 @@ export default function useTaskListDetail(listId) {
     }
   };
 
-  return { tasks, addTask };
+  return { tasks, setTasks, addTask };
 }
