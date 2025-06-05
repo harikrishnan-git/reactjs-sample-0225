@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../src/firebase";
 
-function TaskListDetail({ listId }) {
+export default function TaskListDetail(listId) {
   const [tasks, setTasks] = useState([]);
-  const [taskText, setTaskText] = useState("");
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -15,16 +14,25 @@ function TaskListDetail({ listId }) {
     fetchTasks();
   }, [listId]);
 
-  const addTask = async (listId) => {
-    if (!taskText.trim()) return;
-    const docRef = await addDoc(collection(db, "tasklists", listId, "tasks"), {
-      title: taskText,
-      completed: false,
-    });
-    setTasks((prev) => [
-      ...prev,
-      { id: docRef.id, title: taskText, completed: false },
-    ]);
-    setTaskText("");
+  const addTask = async (listId, title, description, date) => {
+    try {
+      if (!title.trim()) return;
+      const docRef = await addDoc(
+        collection(db, "tasklists", listId, "tasks"),
+        {
+          title,
+          description,
+          date,
+          completed: false,
+        }
+      );
+      setTasks((prev) => [
+        ...prev,
+        { id: docRef.id, title, description, date, completed: false },
+      ]);
+    } catch (error) {
+      console.error("Error adding task: ", error);
+    }
   };
+  return { tasks, addTask, setTasks };
 }

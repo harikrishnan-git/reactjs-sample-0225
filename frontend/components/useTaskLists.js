@@ -8,7 +8,7 @@ export default function useTaskLists() {
   useEffect(() => {
     const fetchLists = async () => {
       const q = query(
-        collection(db, "taskLists"),
+        collection(db, "tasklists"),
         where("userId", "==", auth.currentUser.uid)
       );
       const snapshot = await getDocs(q);
@@ -20,7 +20,7 @@ export default function useTaskLists() {
   const addList = async (title) => {
     try {
       if (!title.trim()) return;
-      const docRef = await addDoc(collection(db, "taskLists"), {
+      const docRef = await addDoc(collection(db, "tasklists"), {
         name: title,
         userId: auth.currentUser.uid,
       });

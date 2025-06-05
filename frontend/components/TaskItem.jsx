@@ -7,7 +7,7 @@ export default function TaskItem({ task, tasks, setTasks, index }) {
         key={index}
         className="w-full text-sm text-gray-700 dark:text-gray-300"
       >
-        <div className="flex">
+        <div className="flex m-2">
           <input
             id="link-checkbox"
             type="checkbox"
@@ -25,12 +25,12 @@ export default function TaskItem({ task, tasks, setTasks, index }) {
               htmlFor="link-checkbox"
               className="font-bold text-lg mx-auto ms-2 text-gray-900 dark:text-gray-300"
             >
-              {task.task}.
+              {task.title}
             </label>
           </div>
         </div>
-        <p className="pl-8 text-gray-300 text-sm mx-auto ms-2">
-          {task.details}
+        <p className="my-2 pl-8 text-gray-300 text-sm mx-auto ms-2">
+          {task.description ? task.description : "No description provided."}
         </p>
         <div className="flex text-red-600 font-semibold">
           <div className="bg-amber-300 w-fit mx-auto px-1 rounded-md">

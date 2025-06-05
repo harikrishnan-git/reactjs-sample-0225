@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { usePopupContext } from "../contexts/PopupContext";
+import taskUpdate from "./taskUpdate";
 
 export default function AddTaskPopup() {
+  const { listId } = usePopupContext();
+  if (!listId) return null; // Ensure listId is available before proceeding
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const { addTask } = taskUpdate();
   const { close } = usePopupContext();
   return (
     <div
@@ -44,6 +51,11 @@ export default function AddTaskPopup() {
               className="space-y-4"
               onSubmit={(e) => {
                 e.preventDefault();
+                addTask(listId, title, description, dueDate);
+                setTitle("");
+                setDescription("");
+                setDueDate("");
+                close();
               }}
             >
               <div>
@@ -57,6 +69,8 @@ export default function AddTaskPopup() {
                   type="text"
                   name="title"
                   id="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                   placeholder="Enter task title"
                   required
@@ -74,6 +88,8 @@ export default function AddTaskPopup() {
                   name="description"
                   id="description"
                   rows="3"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                   placeholder="Enter task details"
                 ></textarea>
@@ -90,6 +106,8 @@ export default function AddTaskPopup() {
                   type="date"
                   name="dueDate"
                   id="dueDate"
+                  value={dueDate}
+                  onChange={(e) => setDueDate(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 />
               </div>

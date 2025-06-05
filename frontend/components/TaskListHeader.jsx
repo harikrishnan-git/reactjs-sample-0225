@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function TaskListHeaderr() {
+export default function TaskListHeader({ title }) {
   return (
     <div>
       <div className="flex justify-between m-2">
-        <p className="text-sm text-gray-400">My tasks</p>
+        <p className="text-sm text-gray-400">{title}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

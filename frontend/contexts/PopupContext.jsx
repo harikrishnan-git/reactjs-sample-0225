@@ -7,12 +7,16 @@ export const usePopupContext = () => {
 };
 
 export const PopupProvider = ({ children }) => {
+  const [listId, setListId] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  const open = () => setShowPopup(true);
+  const open = (listId) => {
+    setShowPopup(true);
+    setListId(listId);
+  };
   const close = () => setShowPopup(false);
 
   return (
-    <PopupContext.Provider value={{ showPopup, open, close }}>
+    <PopupContext.Provider value={{ showPopup, open, close, listId }}>
       {children}
     </PopupContext.Provider>
   );

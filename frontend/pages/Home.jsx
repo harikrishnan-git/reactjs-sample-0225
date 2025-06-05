@@ -15,9 +15,13 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      {lists.map((data, index) => (
-        <TaskList />
-      ))}
+      <div className="flex flex-wrap gap-4 m-4">
+        {lists.map((data, index) => (
+          <div className="" key={index}>
+            <TaskList key={index} data={data} />
+          </div>
+        ))}
+      </div>
       {showPopup && <AddTaskPopup />}
       {showListPopup && (
         <AddTaskListPopup setShowListPopup={setShowListPopup} />
