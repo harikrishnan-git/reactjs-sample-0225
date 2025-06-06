@@ -12,7 +12,6 @@ A responsive task management web app built with **React**, **Firebase**, and **T
 - ✅ Create, edit, and delete task lists
 - 📝 Add and manage tasks under each list
 - ⏱ Real-time updates with Firestore
-- 🌙 Light and dark mode ready (Tailwind-compatible)
 - 📱 Responsive UI using Tailwind CSS
 
 ---
